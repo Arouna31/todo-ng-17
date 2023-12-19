@@ -1,0 +1,30 @@
+.container {
+    flex-direction: column;
+    border-right: 1px solid #D8D8D8 ;
+    height: 100vh;
+    justify-content: center;
+    align-content: center;
+    padding: 0px 50px; 
+}
+
+.title {
+    font-weight: 700 !important;
+}
+
+.add-link {
+   color: #ABABAB !important; 
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    color: #000;
+    font-family: SF Pro;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 15px;
+}

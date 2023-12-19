@@ -1,0 +1,9 @@
+input {
+  display: flex;
+  width: 100px;
+  padding: 11px 506.741px 11px 18.259px;
+  align-items: center;
+
+  border-radius: 3px;
+  background: #e1dede;
+}
