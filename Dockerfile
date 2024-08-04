@@ -33,5 +33,3 @@ ENV CHOKIDAR_USEPOLLING=true
 
 # Lancer l'application 
 CMD ["npm", "run", "start"]
-
-
