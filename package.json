@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0 --port 3000",
+    "dev": "docker build -t app . && docker run -it -p 3000:3000 -v ${PWD}:/usr/app -v /usr/app/node_modules app",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
