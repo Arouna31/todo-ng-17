@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs "NodeJS 20.15.1"
-    }
-
     environment {
         CI = 'true'
     }

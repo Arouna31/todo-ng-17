@@ -4,16 +4,16 @@ jobs:
   jfr-container-action-pipeline:
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [14.x, 16.x]
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:master
     steps:
       - name: Checkout Repositorie
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
