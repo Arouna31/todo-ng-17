@@ -32,7 +32,7 @@ jobs:
         env:
           NODE_VERSION: 16
 
-      - name: Jenkins pipeline in the container
+      - name: Jenkins pipeline
         uses:
           jenkinsci/jfr-container-action@master
         with:
