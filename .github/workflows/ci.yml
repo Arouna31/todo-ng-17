@@ -6,7 +6,12 @@ jobs:
     container:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:master
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repositorie
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.15.1'
       - name: Jenkins pipeline in the container
         uses:
           jenkinsci/jfr-container-action@master
