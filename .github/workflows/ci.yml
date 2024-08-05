@@ -6,8 +6,8 @@ jobs:
     container:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:master
       env:
-         ACTIONS_RUNNER_FORCED_INTERNAL_NODE_VERSION: node16
-         ACTIONS_RUNNER_FORCE_ACTIONS_NODE_VERSION: node16 
+         ACTIONS_RUNNER_FORCED_INTERNAL_NODE_VERSION: node20
+         ACTIONS_RUNNER_FORCE_ACTIONS_NODE_VERSION: node20 
          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     steps:
       - name: Checkout Repositorie
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
 
       - name: Jenkins pipeline in the container
         uses:
