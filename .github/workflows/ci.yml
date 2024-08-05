@@ -32,10 +32,10 @@ jobs:
         env:
           NODE_VERSION: 16
 
-      - name: Jenkins pipeline
-        uses:
-          jenkinsci/jfr-container-action@master
-        with:
-          command: run
-          jenkinsfile: Jenkinsfile
-          pluginstxt: plugins.txt
+      - name: Download Jenkins WAR
+        run: |
+            curl -L -o jenkins.war https://get.jenkins.io/war-stable/latest/jenkins.war
+  
+      - name: Jenkins pipeline in the container
+        run: |
+            jenkinsfile-runner -w jenkins.war -f Jenkinsfile -p plugins.txt
