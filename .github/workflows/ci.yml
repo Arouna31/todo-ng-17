@@ -4,7 +4,7 @@ jobs:
   jfr-container-action-pipeline:
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x]
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:master
