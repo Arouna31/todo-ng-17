@@ -6,17 +6,24 @@ jobs:
     container:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:master
       env:
-         ACTIONS_RUNNER_FORCED_INTERNAL_NODE_VERSION: node20
-         ACTIONS_RUNNER_FORCE_ACTIONS_NODE_VERSION: node20 
+         ACTIONS_RUNNER_FORCED_INTERNAL_NODE_VERSION: node16
          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     steps:
-      - name: Checkout Repositorie
-        uses: actions/checkout@v3
+      - name: Set up Git
+        run: |
+          apt-get update && apt-get install -y git
+
+      - name: Checkout Repository
+        run: |
+            git config --global url."https://$GITHUB_TOKEN:@github.com/".insteadOf "https://github.com/"
+            git clone https://github.com/${{ github.repository }} .
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 16
 
       - name: Jenkins pipeline in the container
         uses:
