@@ -45,4 +45,4 @@ jobs:
   
       - name: Jenkins pipeline in the container
         run: |
-            jenkinsfile-runner -w jenkins.war -f Jenkinsfile -p plugins.txt
+            jenkinsfile-runner -w . -f Jenkinsfile -p plugins.txt
