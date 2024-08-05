@@ -2,18 +2,21 @@ name: CI
 on: [push]
 jobs:
   jfr-container-action-pipeline:
+    strategy:
+      matrix:
+        node-version: [20.x]
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:master
     steps:
       - name: Checkout Repositorie
         uses: actions/checkout@v2
-        with:
-          node-version: '20.15.1'
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20.15.1'
+          node-version: ${{ matrix.node-version }}
+          
       - name: Jenkins pipeline in the container
         uses:
           jenkinsci/jfr-container-action@master
