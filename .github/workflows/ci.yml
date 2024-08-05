@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:master
+      env:
+        ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true 
     steps:
       - name: Checkout Repositorie
         uses: actions/checkout@v4
