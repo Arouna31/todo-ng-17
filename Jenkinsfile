@@ -12,17 +12,17 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                echo 'npm install'
+                sh 'echo npm install'
             }
         }
         stage('Run Tests') {
             steps {
-                echo 'npm test'
+                sh 'echo npm test'
             }
         }
         stage('Build') {
             steps {
-                echo 'npm run build --prod'
+                sh 'echo npm run build --prod'
             }
         }
     }
