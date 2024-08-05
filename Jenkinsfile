@@ -6,6 +6,12 @@ pipeline {
     }
 
     stages {
+
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Arouna31/todo-ng-17.git'
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 sh 'echo npm instal'
@@ -22,13 +28,20 @@ pipeline {
             }
         }
     }
-
     post {
         success {
-            echo 'Build succeeded!'
+            emailext (
+                subject: "Build Successful: ${currentBuild.fullDisplayName}",
+                body: "Good news, the build was successful.",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+            )
         }
         failure {
-            echo 'Build failed!'
+            emailext (
+                subject: "Build Failed: ${currentBuild.fullDisplayName}",
+                body: "Something went wrong. Check the Jenkins console for details.",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+            )
         }
     }
 }
