@@ -1,2 +1,2 @@
-workflow-aggregator
-pipeline-stage-view
+workflow-aggregator:2.6
+pipeline-stage-view:2.19 
