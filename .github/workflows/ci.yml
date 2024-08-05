@@ -35,6 +35,13 @@ jobs:
       - name: Download Jenkins WAR
         run: |
             curl -L -o jenkins.war https://get.jenkins.io/war-stable/latest/jenkins.war
+
+      - name: Install Jenkinsfile Runner
+        run: |
+          curl -L -o jenkinsfile-runner.tar.gz https://repo.jenkins-ci.org/releases/io/jenkins/jenkinsfile-runner/1.0-beta-32/jenkinsfile-runner-1.0-beta-32.tar.gz
+          tar -xzvf jenkinsfile-runner.tar.gz
+          mv jenkinsfile-runner-1.0-beta-32/bin/jenkinsfile-runner /usr/local/bin/jenkinsfile-runner
+          chmod +x /usr/local/bin/jenkinsfile-runner
   
       - name: Jenkins pipeline in the container
         run: |
