@@ -46,4 +46,6 @@ jobs:
   
       - name: Jenkins pipeline in the container
         run: |
+            pwd
+            ls
             jenkinsfile-runner -f ./todo-ng-17/Jenkinsfile -p ./todo-ng-17/plugins.txt
