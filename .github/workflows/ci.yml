@@ -47,6 +47,5 @@ jobs:
       - name: Jenkins pipeline in the container
         run: |
             pwd
-            rm -f jenkins.war && rm -rf jenkinsfile-runner-1.0-beta-32 && rm -f jenkinsfile-runner.tar.gz
             ls
-            jenkinsfile-runner -f ./Jenkinsfile -p ./plugins.txt
+            jenkinsfile-runner -f ./Jenkinsfile
