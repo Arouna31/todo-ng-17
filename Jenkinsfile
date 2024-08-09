@@ -3,18 +3,20 @@ pipeline {
 
     environment {
         CI = 'true'
+        CREDENTIALS = credentials('global-credentials')
     }
 
     stages {
 
+
         stage('Checkout') {
             steps {
-                git 'https://github.com/Arouna31/todo-ng-17.git'
+                sh('curl -u ${CREDENTIALS_USR}:${CREDENTIALS_PSW} git https://github.com/Arouna31/todo-ng-17.git')
             }
         }
         stage('Install Dependencies') {
             steps {
-                sh 'echo npm instal'
+                sh 'echo npm install'
             }
         }
         stage('Run Tests') {
