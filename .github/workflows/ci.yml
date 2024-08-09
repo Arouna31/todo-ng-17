@@ -42,6 +42,7 @@ jobs:
           tar -xzvf jenkinsfile-runner.tar.gz
           mv jenkinsfile-runner-1.0-beta-32/packaging/docker/unix/jenkinsfile-runner-launcher /usr/local/bin/jenkinsfile-runner
           chmod +x /usr/local/bin/jenkinsfile-runner
+          pwd
   
       - name: Jenkins pipeline in the container
         run: |
