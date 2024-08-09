@@ -3,49 +3,10 @@ on: [push]
 jobs:
   jfr-container-action-pipeline:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/jenkinsci/jenkinsfile-runner:main
-      env:
-         ACTIONS_RUNNER_FORCED_INTERNAL_NODE_VERSION: node16
-         ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     steps:
-      - name: Set up Git
-        run: |
-          apt-get update && apt-get install -y git
-
-      - name: Checkout Repository
-        run: |
-            git config --global url."https://$GITHUB_TOKEN:@github.com/".insteadOf "https://github.com/"
-            git clone https://github.com/${{ github.repository }} .
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install Node.js
-        run: |
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm install 16
-          nvm use 16
-          node -v
-          npm -v
-        env:
-          NODE_VERSION: 16
-
-      - name: Download Jenkins WAR
-        run: |
-            curl -L -o jenkins.war https://get.jenkins.io/war-stable/latest/jenkins.war
-
-      - name: Install Jenkinsfile Runner
-        run: |
-          curl -L -o jenkinsfile-runner.tar.gz https://github.com/jenkinsci/jenkinsfile-runner/archive/refs/tags/1.0-beta-32.tar.gz
-          tar -xzvf jenkinsfile-runner.tar.gz
-          mv jenkinsfile-runner-1.0-beta-32/packaging/docker/unix/jenkinsfile-runner-launcher /usr/local/bin/jenkinsfile-runner
-          chmod +x /usr/local/bin/jenkinsfile-runner
-          pwd
-  
-      - name: Jenkins pipeline in the container
-        run: |
-            pwd
-            ls
-            jenkinsfile-runner -f /__w/todo-ng-17/todo-ng-17/Jenkinsfile
+      - name: Checkout Repositorie
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
