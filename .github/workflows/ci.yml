@@ -49,4 +49,4 @@ jobs:
             pwd
             rm -f jenkins.war && rm -rf jenkinsfile-runner-1.0-beta-32 && rm -f jenkinsfile-runner.tar.gz
             ls
-            jenkinsfile-runner -f ./todo-ng-17/Jenkinsfile -p ./todo-ng-17/plugins.txt
+            jenkinsfile-runner -f ./Jenkinsfile -p ./plugins.txt
