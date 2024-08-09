@@ -48,4 +48,4 @@ jobs:
         run: |
             pwd
             ls
-            jenkinsfile-runner
+            jenkinsfile-runner -f /__w/todo-ng-17/todo-ng-17/Jenkinsfile
