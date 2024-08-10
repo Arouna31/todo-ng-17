@@ -2,12 +2,18 @@ name: Java CI
 on: [push]
 jobs:
   jenkins-container-pipeline:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #container principale de d'exécution
     container:
-      image: ghcr.io/jenkinsci/jenkinsfile-runner:latest
+      image: ghcr.io/jenkinsci/jenkinsfile-runner:latest #container de mon runner
     steps:
-      - uses: actions/checkout@v4
-      - uses: jenkinsci/jfr-container-action@master
+      - uses: actions/checkout@v4 #action checkout pour cloner mon projet
+
+      - name: Install JDK
+        run: |
+          apt-get update
+          apt-get install -y openjdk-11-jdk
+
+      - uses: jenkinsci/jfr-container-action@master #action pour la configuration de mon runner
         with:
           command: run
           jenkinsfile: Jenkinsfile
