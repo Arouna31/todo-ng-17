@@ -26,6 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: jenkinsci/jfr-setup-action@master
+        with: 
+          jenkins-version: 2.387.3
       - uses: jenkinsci/jfr-runtime-action@master
         with:
           command: run
