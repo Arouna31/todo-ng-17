@@ -35,14 +35,14 @@ pipeline {
             emailext (
                 subject: "Build Successful: ${currentBuild.fullDisplayName}",
                 body: "Good news, the build was successful.",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                to: 'arounakinda@gmail.com'
             )
         }
         failure {
             emailext (
                 subject: "Build Failed: ${currentBuild.fullDisplayName}",
                 body: "Something went wrong. Check the Jenkins console for details.",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                to: 'arounakinda@gmail.com'
             )
         }
     }
