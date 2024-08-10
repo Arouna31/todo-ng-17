@@ -1,19 +1,13 @@
-name: CI
+name: Java CI
 on: [push]
 jobs:
-  jfr-container-action-pipeline:
+  jenkins-container-pipeline:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:master
     steps:
-      - name: Checkout Repositorie
-        uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Install runner
-        uses:
+      - uses: actions/checkout@v2
+      - uses:
           jenkinsci/jfr-container-action@master
         with:
           command: run
