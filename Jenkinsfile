@@ -16,12 +16,16 @@ pipeline {
         }
         stage('Dependencies Audit') {
             steps {
-                sh 'npm audit'
+                withNPM() {
+                    sh 'npm audit'
+                }
             }
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci'
+                withNPM() {
+                    sh 'npm ci'
+                }
             }
         }
         stage('Formatting & Linting') {
