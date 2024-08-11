@@ -16,14 +16,14 @@ pipeline {
         }
         stage('Dependencies Audit') {
             steps {
-                withNPM() {
+                withNPM(npmrcConfig:'MyNpmrcConfig') {
                     sh 'npm audit'
                 }
             }
         }
         stage('Install Dependencies') {
             steps {
-                withNPM() {
+                withNPM(npmrcConfig:'MyNpmrcConfig') {
                     sh 'npm ci'
                 }
             }
