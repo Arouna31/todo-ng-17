@@ -15,7 +15,7 @@ pipeline {
             }
         }
         stage('Dependencies Audit') {
-            setps {
+            steps {
                 sh 'npm audit'
             }
         }
