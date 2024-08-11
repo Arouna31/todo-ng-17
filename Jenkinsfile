@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:20.15.1'
+        }
+    }
 
     environment {
         CI = 'true'
@@ -16,14 +20,14 @@ pipeline {
         }
         stage('Dependencies Audit') {
             steps {
-                withNPM(npmrcConfig:'MyNpmrcConfig') {
+                withNPM(npmrcConfig:'4a1e3744-16fb-4398-9348-646fa2fc8261') {
                     sh 'npm audit'
                 }
             }
         }
         stage('Install Dependencies') {
             steps {
-                withNPM(npmrcConfig:'MyNpmrcConfig') {
+                withNPM(npmrcConfig:'4a1e3744-16fb-4398-9348-646fa2fc8261') {
                     sh 'npm ci'
                 }
             }
