@@ -2,18 +2,13 @@ pipeline {
     agent {
         docker {
             image 'node:20.15.1'
-            registryUrl: 'https://registry.hub.docker.com/_/node'
         }
     }
-
     environment {
         CI = 'true'
         CREDENTIALS = credentials('global-credentials')
     }
-
     stages {
-
-
         stage('Checkout') {
             steps {
                 sh('curl -u ${CREDENTIALS_USR}:${CREDENTIALS_PSW} git https://github.com/Arouna31/todo-ng-17.git')
