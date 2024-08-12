@@ -1,13 +1,15 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:20.15.1'
-        }
+    agent any
+
+    tools {
+        nodejs 'NodeJs 22' // Nom de l'installation de Node.js configurée dans Jenkins
     }
+
     environment {
         CI = 'true'
         CREDENTIALS = credentials('global-credentials')
     }
+
     stages {
         stage('Checkout') {
             steps {
@@ -16,16 +18,12 @@ pipeline {
         }
         stage('Dependencies Audit') {
             steps {
-                withNPM(npmrcConfig:'4a1e3744-16fb-4398-9348-646fa2fc8261') {
-                    sh 'npm audit'
-                }
+                sh 'npm audit'
             }
         }
         stage('Install Dependencies') {
             steps {
-                withNPM(npmrcConfig:'4a1e3744-16fb-4398-9348-646fa2fc8261') {
-                    sh 'npm ci'
-                }
+                sh 'npm ci'
             }
         }
         stage('Formatting & Linting') {
@@ -49,6 +47,7 @@ pipeline {
             }
         }
     }
+
     post {
         success {
             emailext (
