@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'node:20.15.1'
-            label: 'docker'
+            registryUrl: 'https://registry.hub.docker.com/_/node'
         }
     }
 
