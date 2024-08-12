@@ -15,15 +15,15 @@ pipeline {
             steps {
                 sh('curl -u ${CREDENTIALS_USR}:${CREDENTIALS_PSW} git https://github.com/Arouna31/todo-ng-17.git')
             }
+        }        
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
         }
         stage('Dependencies Audit') {
             steps {
                 sh 'npm audit'
-            }
-        }
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm ci'
             }
         }
         stage('Formatting & Linting') {
