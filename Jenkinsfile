@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Formatting & Linting') {
             steps {
-                sh 'echo Linting & Formatting'
+                sh 'npm run lint'
             }
         }
         stage('Run Units Tests') {
