@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './sticker.component.html',
-  styleUrl: './sticker.component.css'
+  styleUrl: './sticker.component.css',
 })
-export class StickerComponent {
-
-}
+export class StickerComponent {}

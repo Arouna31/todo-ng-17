@@ -8,10 +8,9 @@ describe('StickerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StickerComponent]
-    })
-    .compileComponents();
-    
+      imports: [StickerComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(StickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

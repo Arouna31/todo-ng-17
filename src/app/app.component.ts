@@ -8,7 +8,7 @@ import { ContainerComponent } from './core/components/container/container.compon
   standalone: true,
   imports: [CommonModule, RouterOutlet, ContainerComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'todo-ng-17';

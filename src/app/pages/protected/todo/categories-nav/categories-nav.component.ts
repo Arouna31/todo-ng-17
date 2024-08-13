@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './categories-nav.component.html',
-  styleUrl: './categories-nav.component.css'
+  styleUrl: './categories-nav.component.css',
 })
-export class CategoriesNavComponent {
-
-}
+export class CategoriesNavComponent {}
