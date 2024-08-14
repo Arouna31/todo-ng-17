@@ -1,34 +1,19 @@
-name: Java CI
+name: CI
 on: [push]
-# jobs:
-#   jenkins-container-pipeline:
-#     runs-on: ubuntu-latest #container principale de d'exécution
-#     container:
-#       image: ghcr.io/jenkinsci/jenkinsfile-runner:latest #container de mon runner
-#     steps:
-#       - uses: actions/checkout@v4 #action checkout pour cloner mon projet
-
-#       - name: Install JDK
-#         run: |
-#           apt-get update
-#           apt-get install -y openjdk-11-jdk
-
-#       - uses: jenkinsci/jfr-container-action@master #action pour la configuration de mon runner
-#         with:
-#           command: run
-#           jenkinsfile: Jenkinsfile
-#           pluginstxt: plugins.txt
-
-
 jobs:
-  job-name:
-    runs-on: ubuntu-latest
+  jenkins-container-pipeline:
+    runs-on: ubuntu-latest #container principale de d'exécution
+    container:
+      image: ghcr.io/jenkinsci/jenkinsfile-runner:latest #container de mon runner
     steps:
-      - uses: actions/checkout@v4
-      - uses: jenkinsci/jfr-setup-action@master
-        with: 
-          jenkins-version: 2.387.3
-      - uses: jenkinsci/jfr-runtime-action@master
+      - uses: actions/checkout@v4 #action checkout pour cloner mon projet
+      - uses: jenkinsci/jfr-container-action@master #action pour la configuration de mon runner
         with:
           command: run
           jenkinsfile: Jenkinsfile
+          pluginstxt: plugins.txt
+
+          # - name: Install JDK
+          # run: |
+          #   apt-get update
+          #   apt-get install -y openjdk-11-jdk
