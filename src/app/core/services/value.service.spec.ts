@@ -14,12 +14,18 @@ describe('ValueService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return value', () => {
+  it('should get value', () => {
     expect(service.getValue())
       .withContext('La valeur à retournée')
       .toEqual([
         { name: 'Ali', age: 12 },
         { name: 'Balil', age: 13 },
       ]);
+  });
+
+  it('should set value', () => {
+    const value = { name: 'Badra', age: 20 };
+
+    expect(service.setValue(value)).toBe(3);
   });
 });

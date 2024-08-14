@@ -5,10 +5,14 @@ import { ValueService } from './value.service';
   providedIn: 'root',
 })
 export class MasterService {
-  // valueService = inject(ValueService);
-  constructor(private valueService: ValueService) {}
+  valueService = inject(ValueService);
+  // constructor(private valueService: ValueService) {}
 
   getValue() {
     return this.valueService.getValue();
+  }
+
+  setValue(value: { name: string; age: number }) {
+    return this.valueService.setValue(value);
   }
 }
