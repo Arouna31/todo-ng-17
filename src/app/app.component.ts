@@ -13,6 +13,4 @@ import { ValueService } from '@core/services/value.service';
 })
 export class AppComponent {
   title = 'todo-ng-17';
-
-  constructor(private v: ValueService) {}
 }
