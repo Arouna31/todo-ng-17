@@ -7,13 +7,12 @@ jobs:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install JDK
+        run: |
+          apt-get update
+          apt-get install -y openjdk-11-jdk
       - uses: jenkinsci/jfr-container-action@master
         with:
           command: run
           jenkinsfile: Jenkinsfile
           pluginstxt: plugins.txt
-
-          # - name: Install JDK
-          # run: |
-          #   apt-get update
-          #   apt-get install -y openjdk-11-jdk
