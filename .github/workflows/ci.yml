@@ -7,12 +7,14 @@ jobs:
       image: ghcr.io/jenkinsci/jenkinsfile-runner:latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install JDK
-        run: |
-          apt-get update
-          apt-get install -y openjdk-11-jdk
-      - uses: jenkinsci/jfr-container-action@master
+      - uses: snow-actions/setup-jenkins@v1.1.0
         with:
-          command: run
-          jenkinsfile: Jenkinsfile
-          pluginstxt: plugins.txt
+          jenkins_home: jenkins_home
+      - run: wget $JENKINS_URL/jnlpJars/jenkins-cli.jar
+      - run: java -jar jenkins-cli.jar -webSocket help
+      - run: java -jar jenkins-cli.jar -webSocket build job-1 -f -v -p param_1=p1
+      # - uses: jenkinsci/jfr-container-action@master
+      #   with:
+      #     command: run
+      #     jenkinsfile: Jenkinsfile
+      #     pluginstxt: plugins.txt
