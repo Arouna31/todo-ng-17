@@ -1,18 +1,14 @@
-name: Java CI
+name: CI
 on: [push]
 jobs:
   jenkins-container-pipeline:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/jenkinsci/jenkinsfile-runner:jre-11-alpine
     steps:
       - uses: actions/checkout@v4
-      - uses: snow-actions/setup-jenkins@v1.1.0
+      - uses: jenkinsci/jfr-container-action@master
         with:
-          jenkins_home: jenkins_home
-      - run: wget $JENKINS_URL/jnlpJars/jenkins-cli.jar
-      - run: java -jar jenkins-cli.jar -webSocket help
-      - run: java -jar jenkins-cli.jar -webSocket build job-1 -f -v -p param_1=p1
-      # - uses: jenkinsci/jfr-container-action@master
-      #   with:
-      #     command: run
-      #     jenkinsfile: Jenkinsfile
-      #     pluginstxt: plugins.txt
+          command: run
+          jenkinsfile: Jenkinsfile
+          pluginstxt: plugins.txt
