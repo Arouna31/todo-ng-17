@@ -3,8 +3,6 @@ on: [push]
 jobs:
   jenkins-container-pipeline:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/jenkinsci/jenkinsfile-runner:latest
     steps:
       - uses: actions/checkout@v4
       - uses: snow-actions/setup-jenkins@v1.1.0
