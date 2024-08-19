@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { ValueService } from '@core/services/value.service';
 
 @Component({
   standalone: true,
@@ -8,4 +9,6 @@ import { Component, signal } from '@angular/core';
 })
 export class BannerComponent {
   title = signal('Test Tour of Heroes');
+
+  private valueService = inject(ValueService);
 }
