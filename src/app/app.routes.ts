@@ -10,6 +10,13 @@ export const routes: Routes = [
     path: '',
     loadChildren: () => import('./pages/protected/protected.routes'),
   },
+  {
+    path: 'signals',
+    loadComponent: () =>
+      import('./shared/components/signals/signals.component').then(
+        (m) => m.SignalsComponent,
+      ),
+  },
   // {
   //     path: '**',
   //     component: '',

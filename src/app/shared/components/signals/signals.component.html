@@ -1,0 +1,9 @@
+<h1>Signals Works !</h1>
+<h2>Counter Signal</h2>
+<div>
+  <span>Le nombre actuel est : {{ counter() }}</span> <br /><br />
+  <span>Le double du nombre est : {{ doubleCounter() }}</span> <br /><br />
+  <button type="button" (click)="increment()">Incremente counter</button>
+  <button type="button" (click)="decrement()">Decremente counter</button>
+  <button type="button" (click)="reset()">Reset counter</button>
+</div>
